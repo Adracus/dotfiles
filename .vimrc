@@ -1,20 +1,31 @@
-call plug#begin('~/.vim/plugged')
+set nocompatible
+filetype off
 
-" Make sure you use single quotes
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'derekwyatt/vim-scala'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 
-:set number 
+" Plugins
+call vundle#begin()
 
-augroup reload_vimrc " {
-	autocmd!
-	autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
 
+call vundle#end()
 filetype plugin indent on
+" End Plugins
+
+" Airline config
+set laststatus=2
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+" End airline config
+
+set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
+syntax on
 
-call plug#end()
