@@ -7,6 +7,15 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+" Fuzzy file, buffer, mru, tag ... finder for Vim
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Syntax checking plugin
+Plugin 'scrooloose/syntastic'
+
+" Lean & mean status / tabline for Vim
+Plugin 'vim-airline/vim-airline'
+
 call vundle#end()
 filetype plugin indent on
 
