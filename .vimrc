@@ -1,31 +1,34 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
-" Plugins
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
+Plugin 'VundleVim/Vundle.vim'
 
 call vundle#end()
 filetype plugin indent on
-" End Plugins
 
-" Airline config
-set laststatus=2
+" Speed up escape handling
+set noesckeys
+set timeout timeoutlen=200
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-" End airline config
+" Use smart and auto indentation
+set smartindent
+set autoindent
 
-set number
-set tabstop=2
-set shiftwidth=2
+" Tab settings
 set expandtab
-syntax on
+set tabstop=4
+set shiftwidth=4
+
+" Enable line numbers
+set number
+
+" Don't wrap long lines
+set nowrap
+
+" Quick escape in insert mode
+inoremap jk <esc>
 
