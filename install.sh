@@ -51,7 +51,7 @@ function cp_bak {
                 cp "$tgt" "$backup_path"
                 ;;
             "$NO")
-                log "Won't create a backup of $tgt"
+                echo "Won't create a backup of $tgt"
                 return
                 ;;
         esac
