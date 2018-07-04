@@ -19,6 +19,9 @@ Plugin 'vim-airline/vim-airline'
 call vundle#end()
 filetype plugin indent on
 
+" Enable syntax highlighting
+syntax on
+
 " Speed up escape handling
 set noesckeys
 set timeout timeoutlen=200
