@@ -52,12 +52,11 @@ function cp_bak {
                 ;;
             "$NO")
                 echo "Won't create a backup of $tgt"
-                return
                 ;;
         esac
-        echo "Copying $src to $tgt"
-        cp "$src" "$tgt"
     fi
+    echo "Copying $src to $tgt"
+    cp "$src" "$tgt"
 }
 
 function install_vimrc {
