@@ -22,6 +22,11 @@ filetype plugin indent on
 " Enable syntax highlighting
 syntax on
 
+" allow backspacing over everything in insert mode
+" (otherwise, sometimes vim won't allow deleting text that was not inserted
+" in your current session)
+set backspace=indent,eol,start
+
 " Speed up escape handling
 set noesckeys
 set timeout timeoutlen=200
