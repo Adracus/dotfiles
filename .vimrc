@@ -7,12 +7,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-" Fuzzy file, buffer, mru, tag ... finder for Vim
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" Syntax checking plugin
-Plugin 'scrooloose/syntastic'
-
 " Lean & mean status / tabline for Vim
 Plugin 'vim-airline/vim-airline'
 
@@ -26,6 +20,9 @@ syntax on
 " (otherwise, sometimes vim won't allow deleting text that was not inserted
 " in your current session)
 set backspace=indent,eol,start
+
+" Enable wildcard menu for filename completion
+set wildmenu
 
 " Speed up escape handling
 set noesckeys
