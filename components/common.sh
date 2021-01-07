@@ -72,6 +72,18 @@ function fatal {
     exit 1
 }
 
+function check-executable {
+    if ! command -v "$1" &> /dev/null; then
+        fatal "executable '$1' needs to be present on PATH"
+    fi
+}
+
+function check-is-root {
+    if [ "$EUID" -ne 0 ]; then
+        fatal "Please run this as root"
+    fi
+}
+
 function ask_yes_no {
     local prompt="${1:-"Continue"}"
     local default="${2:-"$YES"}"
@@ -85,6 +97,17 @@ function ask_yes_no {
             >&2 echo "Invalid input: '$choice'"
             ask_yes_no "$1";;
     esac
+}
+
+function ensure-line {
+    line="$1"
+    file="$2"
+    if [[ -z $line || -z $file ]]; then
+        fatal "ensure-line <line> <file>"
+    fi
+    if ! grep -Fxq "$line" "$file"; then
+        echo "$line" >> "$file"
+    fi
 }
 
 function cp_bak {
