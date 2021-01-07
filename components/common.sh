@@ -1,7 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+# Choice values
 YES="y"
 NO="n"
+
+# Color values
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+ORANGE='\033[0;33m'
+NC='\033[0m' # No Color
+IC='\033[41m' # Invalid Color
+
+function upcase {
+    printf "%s" "$1" | awk '{ print toupper($0) }'
+}
+
+function downcase {
+    printf "%s" "$1" | awk '{ print tolower($0) }'
+}
 
 function header {
     echo "========================================="
@@ -11,6 +27,49 @@ function header {
 
 function newline {
     echo ""
+}
+
+function __log-color {
+    level="$(upcase "$1")"
+    case "$level" in
+        INFO)
+            echo "$CYAN"
+            ;;
+        WARN)
+            echo "$ORANGE"
+            ;;
+        ERROR|FATAL)
+            echo "$RED"
+            ;;
+        *)
+            echo "$IC"
+            ;;
+    esac
+}
+
+function log {
+    level="$(upcase "$1")"
+    printf "$(__log-color "$level")$level [$(date +'%T')]: "
+    shift
+    echo $@
+    printf "$NC"
+}
+
+function info {
+    log info $@
+}
+
+function warn {
+    log warn $@
+}
+
+function error {
+    log error $@
+}
+
+function fatal {
+    log fatal $@
+    exit 1
 }
 
 function ask_yes_no {
